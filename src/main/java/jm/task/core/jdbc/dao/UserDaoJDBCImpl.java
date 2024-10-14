@@ -23,7 +23,7 @@ public class UserDaoJDBCImpl implements UserDao {
         try (Statement statement = connection.createStatement()) {
             statement.executeUpdate(sql);
         } catch (SQLException e) {
-            e.getMessage();
+            throw new RuntimeException(e);
         }
     }
 
@@ -33,7 +33,7 @@ public class UserDaoJDBCImpl implements UserDao {
         try (Statement statement = connection.createStatement()) {
             statement.executeUpdate(sql);
         } catch (SQLException e) {
-            e.getMessage();
+            throw new RuntimeException(e);
         }
     }
 
@@ -47,7 +47,7 @@ public class UserDaoJDBCImpl implements UserDao {
             System.out.println("User с именем — " + name  + " добавлен в базу данных");
 
         } catch (SQLException e) {
-            e.getMessage();
+            throw new RuntimeException(e);
         }
 
     }
@@ -75,7 +75,7 @@ public class UserDaoJDBCImpl implements UserDao {
                 users.add(user);
             }
         } catch (SQLException e) {
-            e.getMessage();
+            throw new RuntimeException(e);
         }
         return users;
     }
