@@ -14,12 +14,8 @@ public class UserDaoHibernateImpl implements UserDao {
 
     private final SessionFactory factory = Util.getSessionFactory();
 
-
     public UserDaoHibernateImpl() {
-
-
     }
-
 
     @Override
     public void createUsersTable() {
@@ -30,7 +26,6 @@ public class UserDaoHibernateImpl implements UserDao {
                 "name VARCHAR(50) NOT NULL, lastName VARCHAR(50) NOT NULL, " +
                 "age TINYINT NOT NULL)";
         try {
-
             session.createSQLQuery(sql).executeUpdate();
             tx.commit();
         } catch (HibernateException e) {
@@ -46,7 +41,6 @@ public class UserDaoHibernateImpl implements UserDao {
     public void dropUsersTable() {
         Session session = factory.openSession();
         Transaction tx = session.beginTransaction();
-
 
         String sql = "DROP TABLE IF EXISTS User";
         try {
@@ -87,7 +81,6 @@ public class UserDaoHibernateImpl implements UserDao {
         Session session = factory.openSession();
         Transaction tx = session.beginTransaction();
         try {
-
             User user = session.get(User.class, id);
             if (user != null) {
                 session.delete(user);
@@ -125,7 +118,6 @@ public class UserDaoHibernateImpl implements UserDao {
         Session session = factory.openSession();
         Transaction tx = session.beginTransaction();
         try {
-
             session.createQuery("delete from User").executeUpdate();
             tx.commit();
         } catch (HibernateException e) {
