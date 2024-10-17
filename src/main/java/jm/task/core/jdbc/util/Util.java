@@ -7,9 +7,6 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.util.Properties;
 
 public class Util {
@@ -18,14 +15,6 @@ public class Util {
     private static final String DB_PASSWORD = "root1";
     private static SessionFactory sessionFactory;
 
-    public static Connection getConnection() {
-        try {
-            return DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
-    }
 
     public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
